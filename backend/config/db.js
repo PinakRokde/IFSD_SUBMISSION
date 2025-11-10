@@ -2,11 +2,11 @@ import mongoose from 'mongoose';
 
 const connectDB = async () => {
   try {
-    const conn = await mongoose.connect(process.env.MONGO_URI, {
+    const conn = await mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/pinakCounter', {
       useNewUrlParser: true,
       useUnifiedTopology: true
     });
-    console.log(`MongoDB connected: ${conn.connection.host}`);
+    console.log(`MongoDB Community connected: ${conn.connection.host}`);
   } catch (error) {
     console.error('Mongo connection error', error.message);
     process.exit(1);
